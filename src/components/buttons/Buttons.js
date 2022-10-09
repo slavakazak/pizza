@@ -1,6 +1,6 @@
 import React from "react"
 import { Button } from "./Button"
-import { usePersons } from "./PersonsContext"
+import { usePersons } from "../persons/PersonsContext"
 
 export function Buttons(){
 	const {persons, setPersons, setPersonsWithSort} = usePersons()

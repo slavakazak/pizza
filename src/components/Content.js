@@ -1,9 +1,9 @@
 import { Count } from "./Count"
 import { Form } from "./Form"
-import { List } from "./List"
+import { List } from "./persons/List"
 import { ThemeButton } from './ThemeButton'
-import { PersonsProvider } from './PersonsContext'
-import { Buttons } from "./Buttons"
+import { PersonsProvider } from './persons/PersonsContext'
+import { Buttons } from "./buttons/Buttons"
 
 export function Content() {
 
