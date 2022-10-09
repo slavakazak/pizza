@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  transition-duration: 0.2s;
+  transition-property: background, background-color, color;
+}
+
+
+/**
+* Body CSS
+*/
+
+body {
+  --white: #fafafa;
+  --black: #212121;
+
+  --primary: #3f51b5;
+  --hover: #2c387e;
+  --placeholder: rgba(0,0,0,.26);
+  --second: #e0e0e0;
+  --third: #424242;
+
+  --background: var(--white);
+  --background-text: var(--black);
+  --primary-text: var(--white);
+  --second-text: var(--black);
+  --third-text:  var(--white);
+  --form: var(--hover);
+
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.429;
+  color: var(--background-text);
+  background-color: var(--background);
+}
+
+body.dark-theme{
+  --primary: #283593;
+  --hover: #3f51b5;
+  --placeholder: #757575;
+  --second: #424242;
+  --third: #616161;
+
+  --background: var(--black);
+  --background-text: var(--white);
+  --primary-text: var(--white);
+  --second-text: var(--white);
+  --third-text:  var(--white);
+}
+
+html,
+body,
+input,
+textarea,
+button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ 
+/**
+* Sidebar CSS
+*/
+
+#sidebar {
+  background-color: var(--primary);
+  padding: 15px;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 180px;
+    height: 100%;
+    padding-top: 30px;
+  }
+}
+ 
+.head-input{
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 40px;
+  color: var(--primary-text);
+  background: transparent;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.head-input:focus-visible, .head-input.no-value{
+  background: var(--hover);
+}
+ 
+/**
+* Content CSS
+*/
+
+#content {
+  padding: 20px 15px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  #content {
+    margin-left: 180px;
+  }
+}
+
+.row{
+  margin: 0 -15px;
+}
+
+.col{
+  box-sizing: border-box;
+  min-height: 1px;
+  padding: 0 15px;
+}
+
+@media (min-width: 544px){
+  .col{
+    margin-left: 8.3333333333%;
+    width: 83.3333333333%;
+    float: left;
+  }
+}
+
+.top-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2{
+  color: var(--background-text);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.theme{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  position: relative;
+  outline: none;
+}
+
+.dark-theme .toggle-default{
+  opacity: 0;
+  transform: rotate(-120deg);
+  transform-origin: center center;
+}
+
+.toggle-dark{
+  opacity: 0;
+  transform: scale(.4);
+  transform-origin: center center;
+}
+.dark-theme .toggle-dark{
+  opacity: 1;
+  transform: scale(.8);
+}
+
+
+.toggle-decorator{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  transition: .3s ease-in-out;
+}
+.toggle-decorator svg{
+  fill: var(--background-text);
+  margin: auto;
+}
+
+#list{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px -5px;
+}
+.person{
+  width: calc(100% - 10px);
+  margin: 5px;
+  border-radius: 3px;
+  padding: 0 60px 0 10px;
+  line-height: 50px;
+  max-height: 100px;
+  word-wrap: break-word;
+  display: block;
+  font-size: 20px;
+  box-sizing: border-box;
+  color: var(--second-text);
+  background-color: var(--second);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 2px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 20%);
+  user-select: none;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .person{
+    width: calc(50% - 10px);
+  }
+}
+.person.act{
+  color: var(--primary-text);
+  background-color: var(--primary);
+}
+.person .cross{
+  background: var(--third);
+  color: var(--third-text);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+  top: 0;
+  right: 0;
+  font-size: 40px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.textfield {
+  display: block;
+  padding-top: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.textfield>input{
+  overflow: visible;
+  margin: 0;
+  height: 32px;
+  box-sizing: border-box;
+  display: block;
+  background-color: transparent;
+  color: var(--background-text);
+  border: none;
+  border-bottom: 1px solid var(--placeholder);
+  outline: 0;
+  width: 100%;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: inherit;
+  background-image: none;
+}
+
+.textfield>input:focus, .textfield>input.filled {
+  height: calc(32px + 1px);
+  margin-bottom: -1px;
+  border-width: 2px;
+}
+.textfield>input:focus {
+  border-color: var(--form);
+}
+
+.textfield>label {
+  position: absolute;
+  transform: translate(0,15px);
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--placeholder);
+  text-overflow: clip;
+  cursor: text;
+  pointer-events: none;
+  top: 0;
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.textfield>input:focus~label, .textfield>input.filled~label{
+  transform: translate(0,0);
+  font-size: 12px;
+  line-height: 15px;
+  text-overflow: ellipsis;
+}
+.textfield>input:focus~label{
+  color: var(--form);
+}
+
+#submit{
+  width: 100%;
+  margin: 0;
+  height: 40px;
+  line-height: 40px;
+}
+@media (min-width: 768px) {
+  #submit{
+    width: 50%;
+  }
+}
+
+.btn {
+  background-color: var(--primary);
+  color: var(--primary-text);
+  box-shadow: 0 0 2px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 20%);
+  text-transform: uppercase;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  height: 36px;
+  padding: 0 5px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  touch-action: manipulation;
+  background-image: none;
+  text-align: center;
+  line-height: 36px;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+  font-size: 14px;
+  font-family: inherit;
+  letter-spacing: .03em;
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  box-sizing: border-box;
+}
+.btn:hover {
+  background-color: var(--hover);
+}
+
+.buttons{
+  display: flex;
+  margin: 20px -5px;
+  width: calc(100% + 10px);
+}
+@media (min-width: 768px) {
+  .buttons{
+    width: calc(50% + 10px);
+  }
+}
+
