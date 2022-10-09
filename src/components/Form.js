@@ -1,13 +1,16 @@
 import { useState } from 'react'
+import { usePersons } from "./PersonsContext"
 
-export function Form({ onChange }) {
+export function Form() {
+
+	const {handleAdd} = usePersons()
 
 	const [value, setValue] = useState('')
 
   function handleSubmit(event) {
 		if(isValid(value.trim())){
 
-			onChange({
+			handleAdd({
 				id: Date.now(),
 				name: value.trim(),
 				eating: false

@@ -1,5 +1,10 @@
-export function Count({ active, all }){
+import { usePersons } from "./PersonsContext"
+
+export function Count(){
+
+	const {persons, numberOfActive} = usePersons()
+
 	return(
-		<h2>Количество: {active} / {all}</h2>
+		<h2>Количество: {numberOfActive} / {persons.length}</h2>
 	)
 }
