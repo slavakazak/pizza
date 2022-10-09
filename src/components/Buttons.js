@@ -3,7 +3,15 @@ import { Button } from "./Button"
 import { usePersons } from "./PersonsContext"
 
 export function Buttons(){
-	const {handleClear, handleDeleteAll} = usePersons()
+	const {persons, setPersons, setPersonsWithSort} = usePersons()
+
+	function handleClear(){
+		setPersonsWithSort(persons.map(person => ({...person, eating: false})))
+	}
+
+	function handleDeleteAll(){
+		setPersons([])
+	}
 
 	return (
 		<div className="buttons">

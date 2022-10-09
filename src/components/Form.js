@@ -3,18 +3,21 @@ import { usePersons } from "./PersonsContext"
 
 export function Form() {
 
-	const {handleAdd} = usePersons()
+	const {persons, setPersons} = usePersons()
 
 	const [value, setValue] = useState('')
 
   function handleSubmit(event) {
 		if(isValid(value.trim())){
 
-			handleAdd({
-				id: Date.now(),
-				name: value.trim(),
-				eating: false
-			})	
+			setPersons([
+				...persons, 
+				{
+					id: Date.now(),
+					name: value.trim(),
+					eating: false
+				}
+			])	
 
 			setValue('')
 		}
