@@ -1,42 +1,58 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { usePersons } from "./persons/PersonsContext"
+
+function useInput(initialValue){
+	const [value, setValue] = useState(initialValue)
+
+	const onChange = event => setValue(event.target.value)
+
+	const clear = () => setValue('')
+
+	return{
+		bind: {value, onChange},
+		value,
+		clear
+	}
+}
 
 export function Form() {
 
 	const {persons, setPersons} = usePersons()
 
-	const [value, setValue] = useState('')
+	const input = useInput('')
+
+	const inputEl = useRef(null)
 
   function handleSubmit(event) {
-		if(isValid(value.trim())){
+		const value = input.value.trim()
+
+		if(isValid(value)){
 
 			setPersons([
 				...persons, 
 				{
 					id: Date.now(),
-					name: value.trim(),
+					name: value,
 					eating: false
 				}
 			])	
 
-			setValue('')
+			input.clear()
 		}
     
     event.preventDefault()
   }
 
-	function isValid(value){
-		return value.length >= 1 && value.length <= 256
-	}
+	const isValid = value => value.length >= 1 && value.length <= 256
   
 	return (
 		<form id="form" onSubmit={handleSubmit}>
 			<div className="textfield">
 				<input 
-					type="text" 
-					className={value.trim() && 'filled'} 
-					value={value} 
-					onChange={e => setValue(e.target.value)} 
+					ref={inputEl}
+					type="text"
+					className={input.value.trim() && 'filled'} 
+					{...input.bind}
 					required 
 					minLength="1" 
 					maxLength="256" 
@@ -44,7 +60,7 @@ export function Form() {
 				/>
 				<label htmlFor="name-input">Введи имя</label>
 			</div>
-			<button id="submit" type="submit" className="btn">Добавить</button>
+			<button id="submit" type="submit" className="btn" onClick={() => inputEl.current.focus()}>Добавить</button>
 		</form>
 	)
 }
