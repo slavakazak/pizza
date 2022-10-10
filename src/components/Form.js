@@ -1,19 +1,6 @@
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import { usePersons } from "./persons/PersonsContext"
-
-function useInput(initialValue){
-	const [value, setValue] = useState(initialValue)
-
-	const onChange = event => setValue(event.target.value)
-
-	const clear = () => setValue('')
-
-	return{
-		bind: {value, onChange},
-		value,
-		clear
-	}
-}
+import { useInput } from '../hooks/useInput'
 
 export function Form() {
 
@@ -24,15 +11,13 @@ export function Form() {
 	const inputEl = useRef(null)
 
   function handleSubmit(event) {
-		const value = input.value.trim()
-
-		if(isValid(value)){
+		if(isValid(input.value)){
 
 			setPersons([
 				...persons, 
 				{
 					id: Date.now(),
-					name: value,
+					name: input.value,
 					eating: false
 				}
 			])	
@@ -51,7 +36,7 @@ export function Form() {
 				<input 
 					ref={inputEl}
 					type="text"
-					className={input.value.trim() && 'filled'} 
+					className={input.value && 'filled'} 
 					{...input.bind}
 					required 
 					minLength="1" 
