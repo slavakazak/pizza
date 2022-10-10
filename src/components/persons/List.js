@@ -13,8 +13,7 @@ export function List(){
 			setPersonsWithSort(persons.map(person => {
 				if(person.id === id){
 					return {
-						id: person.id,
-						name: person.name,
+						...person,
 						eating: !person.eating
 					}
 				}
