@@ -4,24 +4,32 @@ const PersonsContext = React.createContext()
 
 export const usePersons = () => useContext(PersonsContext)
 
+const getDocumentHeight = () => Math.max(
+		document.body.scrollHeight, document.documentElement.scrollHeight,
+		document.body.offsetHeight, document.documentElement.offsetHeight,
+		document.body.clientHeight, document.documentElement.clientHeight
+	)
+
 export const PersonsProvider = ({children}) => {
 
 	const [persons, setPersons] = useState(() => JSON.parse(localStorage.getItem('persons') || '[]'))
 
-	const previosPersonsLength = useRef(persons.length)
+	const documentHeight = useRef(0)
+
+	useEffect(() => {
+		documentHeight.current = getDocumentHeight()
+  }, [])
 
 	useEffect(() => {
     localStorage.setItem('persons', JSON.stringify(persons))
 		
-		if(persons.length - previosPersonsLength.current > 0){
-			let scrollPos = Math.max(
-				document.body.scrollHeight, document.documentElement.scrollHeight,
-				document.body.offsetHeight, document.documentElement.offsetHeight,
-				document.body.clientHeight, document.documentElement.clientHeight
-			) - document.documentElement.clientHeight
-			window.scrollTo(0, scrollPos)
+		const diffDocumentHeight = getDocumentHeight() - documentHeight.current
+
+		if(diffDocumentHeight > 0){
+			window.scrollTo(0, window.pageYOffset + diffDocumentHeight)
 		}
-		previosPersonsLength.current = persons.length
+		documentHeight.current = getDocumentHeight()
+
   }, [persons])
 
 	function setPersonsWithSort(newPersons){
