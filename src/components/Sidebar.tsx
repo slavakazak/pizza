@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useInput } from '../hooks/useInput'
 
 export function Sidebar(){
@@ -12,7 +12,7 @@ export function Sidebar(){
 
   return (
     <div id="sidebar">
-      <input className={'head-input' + (input.value ? '' : ' no-value')} type="text" required minLength="1" maxLength="20" {...input.bind}/>
+      <input className={'head-input' + (input.value ? '' : ' no-value')} type="text" required minLength={1} maxLength={20} {...input.bind}/>
     </div>
   )
 }

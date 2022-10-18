@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import React, { FormEvent, useRef } from 'react'
 import { usePersons } from "./persons/PersonsContext"
 import { useInput } from '../hooks/useInput'
 
@@ -8,9 +8,9 @@ export function Form() {
 
 	const input = useInput('')
 
-	const inputEl = useRef(null)
+	const inputEl = useRef<HTMLInputElement>(null)
 
-  function handleSubmit(event) {
+  function handleSubmit(event: FormEvent) {
 		if(isValid(input.value)){
 
 			setPersons([
@@ -28,7 +28,7 @@ export function Form() {
     event.preventDefault()
   }
 
-	const isValid = value => value.length >= 1 && value.length <= 256
+	const isValid = (value: string) => value.length >= 1 && value.length <= 256
   
 	return (
 		<form id="form" onSubmit={handleSubmit}>
@@ -39,13 +39,13 @@ export function Form() {
 					className={input.value && 'filled'} 
 					{...input.bind}
 					required 
-					minLength="1" 
-					maxLength="256" 
+					minLength={1} 
+					maxLength={256} 
 					autoComplete="off"
 				/>
 				<label htmlFor="name-input">Введи имя</label>
 			</div>
-			<button id="submit" type="submit" className="btn" onClick={() => inputEl.current.focus()}>Добавить</button>
+			<button id="submit" type="submit" className="btn" onClick={() => inputEl.current!.focus()}>Добавить</button>
 		</form>
 	)
 }

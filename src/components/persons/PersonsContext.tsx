@@ -1,6 +1,17 @@
 import React, {useState, useContext, useEffect, useRef} from "react"
+import { IPerson } from '../../interfaces'
 
-const PersonsContext = React.createContext()
+interface PersonsContextInterface {
+	persons: IPerson[]
+	setPersons(persons: IPerson[]): void
+	setPersonsWithSort(newPersons: IPerson[]): void
+}
+
+const PersonsContext = React.createContext<PersonsContextInterface>({
+	persons: [],
+	setPersons(){},
+	setPersonsWithSort(){}
+})
 
 export const usePersons = () => useContext(PersonsContext)
 
@@ -10,7 +21,11 @@ const getDocumentHeight = () => Math.max(
 		document.body.clientHeight, document.documentElement.clientHeight
 	)
 
-export const PersonsProvider = ({children}) => {
+type PersonsProviderProps = {
+	children: JSX.Element
+}
+	
+export const PersonsProvider = ({children}: PersonsProviderProps) => {
 
 	const [persons, setPersons] = useState(() => JSON.parse(localStorage.getItem('persons') || '[]'))
 
@@ -32,8 +47,8 @@ export const PersonsProvider = ({children}) => {
 
   }, [persons])
 
-	function setPersonsWithSort(newPersons){
-		setPersons(newPersons.sort((a, b) => a.eating === b.eating ? a.id - b.id : b.eating - a.eating))
+	function setPersonsWithSort(newPersons: IPerson[]){
+		setPersons(newPersons.sort((a, b) => a.eating === b.eating ? a.id - b.id : +b.eating - +a.eating))
 	}
 
 	return (
