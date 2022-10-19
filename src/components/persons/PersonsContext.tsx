@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect, useRef} from "react"
+import React, {useState, useContext, useEffect} from "react"
 import { IPerson } from '../../interfaces'
 
 interface PersonsContextInterface {
@@ -15,12 +15,6 @@ const PersonsContext = React.createContext<PersonsContextInterface>({
 
 export const usePersons = () => useContext(PersonsContext)
 
-const getDocumentHeight = () => Math.max(
-		document.body.scrollHeight, document.documentElement.scrollHeight,
-		document.body.offsetHeight, document.documentElement.offsetHeight,
-		document.body.clientHeight, document.documentElement.clientHeight
-	)
-
 type PersonsProviderProps = {
 	children: React.ReactNode
 }
@@ -29,15 +23,8 @@ export const PersonsProvider = ({children}: PersonsProviderProps) => {
 
 	const [persons, setPersons] = useState<IPerson[]>(() => JSON.parse(localStorage.getItem('persons') || '[]'))
 
-	const documentHeight = useRef(getDocumentHeight())
-
 	useEffect(() => {
     localStorage.setItem('persons', JSON.stringify(persons))
-		
-		const newDocumentHeight = getDocumentHeight()
-		window.scrollTo(0, window.pageYOffset + newDocumentHeight - documentHeight.current)
-		documentHeight.current = newDocumentHeight
-
   }, [persons])
 
 	function setPersonsWithSort(newPersons: IPerson[]){

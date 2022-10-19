@@ -1,6 +1,19 @@
-.person{
+.person-wrap{
   width: calc(100% - 10px);
-  margin: 5px;
+  margin: 0 5px;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+}
+
+@media (min-width: 1000px) {
+  .person-wrap{
+    width: calc(50% - 10px);
+  }
+}
+
+.person{
+  width: 100%;
+  margin: 5px 0;
   border-radius: 3px;
   padding: 0 60px 0 10px;
   line-height: 50px;
@@ -16,12 +29,6 @@
   box-shadow: 0 0 2px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 20%);
   user-select: none;
   cursor: pointer;
-}
-
-@media (min-width: 1000px) {
-  .person{
-    width: calc(50% - 10px);
-  }
 }
 
 .person.act{
@@ -44,4 +51,24 @@
   font-size: 40px;
   cursor: pointer;
   user-select: none;
+}
+
+/* Animation */
+
+.person-enter {
+  max-height: 0;
+}
+
+.person-enter.person-enter-active {
+  max-height: 110px;
+  transition: max-height 300ms ease-in;
+}
+
+.person-exit {
+  max-height: 110px;
+}
+
+.person-exit.person-exit-active {
+  max-height: 0;
+  transition: max-height 300ms ease-in;
 }
