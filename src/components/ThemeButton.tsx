@@ -1,8 +1,20 @@
 import React, { useState, useEffect, useRef } from "react"
 
+const DARK_THEME = 'dark'
+const LIGHT_THEME = 'light'
+
+type ThrmeType = 'dark' | 'light'
+
+function getTheme(): ThrmeType{
+	if(localStorage.getItem('theme') === DARK_THEME || window.matchMedia('(prefers-color-scheme: dark)').matches){
+		return DARK_THEME
+	}
+	return LIGHT_THEME
+}
+
 export function ThemeButton(){
 
-	const [theme, setTheme] = useState(() => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'))
+	const [theme, setTheme] = useState<ThrmeType>(() => getTheme())
 
 	const body = useRef(document.body)
 
@@ -12,7 +24,7 @@ export function ThemeButton(){
   }, [theme])
 
   function toggleTheme(){
-		setTheme(prev => prev === 'light' ? 'dark' : 'light')
+		setTheme(prev => prev === LIGHT_THEME ? DARK_THEME : LIGHT_THEME)
   }
 
 	return (

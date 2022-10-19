@@ -28,7 +28,7 @@ export function Form() {
     event.preventDefault()
   }
 
-	const isValid = (value: string) => value.length >= 1 && value.length <= 256
+	const isValid = (value: string): boolean => value.length >= 1 && value.length <= 256
   
 	return (
 		<form id="form" onSubmit={handleSubmit}>

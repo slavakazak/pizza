@@ -22,28 +22,25 @@ const getDocumentHeight = () => Math.max(
 	)
 
 type PersonsProviderProps = {
-	children: JSX.Element
+	children: React.ReactNode
 }
 	
 export const PersonsProvider = ({children}: PersonsProviderProps) => {
 
-	const [persons, setPersons] = useState(() => JSON.parse(localStorage.getItem('persons') || '[]'))
+	const [persons, setPersons] = useState<IPerson[]>(() => JSON.parse(localStorage.getItem('persons') || '[]'))
 
-	const documentHeight = useRef(0)
+	const documentHeight = useRef(getDocumentHeight())
 
-	useEffect(() => {
-		documentHeight.current = getDocumentHeight()
-  }, [])
+	// useEffect(() => {
+	// 	documentHeight.current = getDocumentHeight()
+  // }, [])
 
 	useEffect(() => {
     localStorage.setItem('persons', JSON.stringify(persons))
 		
-		const diffDocumentHeight = getDocumentHeight() - documentHeight.current
-
-		if(diffDocumentHeight > 0){
-			window.scrollTo(0, window.pageYOffset + diffDocumentHeight)
-		}
-		documentHeight.current = getDocumentHeight()
+		const newDocumentHeight = getDocumentHeight()
+		window.scrollTo(0, window.pageYOffset + newDocumentHeight - documentHeight.current)
+		documentHeight.current = newDocumentHeight
 
   }, [persons])
 
