@@ -1,6 +1,7 @@
 import React from "react"
 import { IPerson } from '../../interfaces'
 import { usePersons } from "./PersonsContext"
+import './person-item.css'
 
 export function PersonItem({ eating, name, id }: IPerson){
 	const {persons, setPersons, setPersonsWithSort} = usePersons()

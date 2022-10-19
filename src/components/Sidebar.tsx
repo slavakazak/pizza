@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useInput } from '../hooks/useInput'
+import './sidebar.css'
 
 const DEFAULT_HEADER = 'Пицца'
 

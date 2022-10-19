@@ -1,6 +1,7 @@
 import React, { FormEvent, useRef } from 'react'
 import { usePersons } from "./persons/PersonsContext"
 import { useInput } from '../hooks/useInput'
+import './form.css'
 
 export function Form() {
 

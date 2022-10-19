@@ -1,0 +1,29 @@
+#content {
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  #content {
+    margin-left: 180px;
+  }
+}
+
+.container{
+	box-sizing: border-box;
+  min-height: 1px;
+  padding: 0 15px;
+}
+
+@media (min-width: 544px){
+	.container{
+		margin: auto;
+    width: 80%;
+	}
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

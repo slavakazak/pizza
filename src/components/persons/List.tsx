@@ -1,6 +1,7 @@
 import React from "react"
 import { PersonItem } from "./PersonItem"
 import { usePersons } from "./PersonsContext"
+import './list.css'
 
 export function List(){
 	const {persons} = usePersons()

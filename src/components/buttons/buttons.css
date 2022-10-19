@@ -1,0 +1,13 @@
+.buttons{
+  display: flex;
+  margin: 20px -5px;
+  width: calc(100% + 10px);
+	box-sizing: border-box;
+	transition: all .2s ease-in-out;
+}
+
+@media (min-width: 1000px) {
+  .buttons{
+    width: calc(50% + 10px);
+  }
+}

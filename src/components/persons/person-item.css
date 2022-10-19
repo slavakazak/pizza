@@ -1,0 +1,47 @@
+.person{
+  width: calc(100% - 10px);
+  margin: 5px;
+  border-radius: 3px;
+  padding: 0 60px 0 10px;
+  line-height: 50px;
+  max-height: 100px;
+  word-wrap: break-word;
+  display: block;
+  font-size: 20px;
+  box-sizing: border-box;
+  color: var(--second-text);
+  background-color: var(--second);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 2px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 20%);
+  user-select: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1000px) {
+  .person{
+    width: calc(50% - 10px);
+  }
+}
+
+.person.act{
+  color: var(--primary-text);
+  background-color: var(--primary);
+}
+
+.person .cross{
+  background: var(--third);
+  color: var(--third-text);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+  top: 0;
+  right: 0;
+  font-size: 40px;
+  cursor: pointer;
+  user-select: none;
+}

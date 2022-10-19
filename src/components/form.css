@@ -1,0 +1,76 @@
+.textfield {
+  display: block;
+  padding-top: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.textfield > input{
+  overflow: visible;
+  margin: 0;
+  height: 32px;
+  box-sizing: border-box;
+  display: block;
+  background-color: transparent;
+  color: var(--background-text);
+  border: none;
+  border-bottom: 1px solid var(--placeholder);
+  outline: 0;
+  width: 100%;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: inherit;
+  background-image: none;
+}
+
+.textfield > input:focus, .textfield > input.filled {
+  height: calc(32px + 1px);
+  margin-bottom: -1px;
+  border-width: 2px;
+}
+.textfield > input:focus {
+  border-color: var(--form);
+}
+
+.textfield > label {
+  position: absolute;
+  transform: translate(0, 15px);
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--placeholder);
+  text-overflow: clip;
+  cursor: text;
+  pointer-events: none;
+  top: 0;
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.textfield > input:focus ~ label, .textfield > input.filled ~ label{
+  transform: translate(0, 0);
+  font-size: 12px;
+  line-height: 15px;
+  text-overflow: ellipsis;
+}
+.textfield > input:focus ~ label{
+  color: var(--form);
+}
+
+#submit{
+  width: 100%;
+  margin: 0;
+  height: 40px;
+  line-height: 40px;
+}
+
+@media (min-width: 1000px) {
+  #submit{
+    width: 50%;
+  }
+}

@@ -1,0 +1,36 @@
+#sidebar {
+  background-color: var(--primary);
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 180px;
+    height: 100%;
+    padding-top: 30px;
+  }
+}
+ 
+.head-input{
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 40px;
+  color: var(--primary-text);
+  background: transparent;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.head-input:focus-visible, .head-input.no-value{
+  background: var(--hover);
+}
