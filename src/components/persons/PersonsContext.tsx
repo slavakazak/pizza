@@ -31,10 +31,6 @@ export const PersonsProvider = ({children}: PersonsProviderProps) => {
 
 	const documentHeight = useRef(getDocumentHeight())
 
-	// useEffect(() => {
-	// 	documentHeight.current = getDocumentHeight()
-  // }, [])
-
 	useEffect(() => {
     localStorage.setItem('persons', JSON.stringify(persons))
 		
