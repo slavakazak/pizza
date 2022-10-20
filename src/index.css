@@ -31,6 +31,8 @@ body {
   line-height: 1.429;
   color: var(--background-text);
   background-color: var(--background);
+
+  overflow-anchor: none;
 }
 
 body.dark-theme{

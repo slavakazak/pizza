@@ -21,6 +21,12 @@ export function PersonItem({ eating, name, id }: IPerson) {
 				return person
 			}))
 		}
+		event.preventDefault()
+	}
+
+	function focusHandler(event: React.FocusEvent) {
+		
+		event.preventDefault()
 	}
 
 	const classes = ['person']
@@ -29,7 +35,7 @@ export function PersonItem({ eating, name, id }: IPerson) {
 	}
 	return (
 		<div className="person-wrap">
-			<div className={classes.join(' ')} onClick={clickHandler}>
+			<div className={classes.join(' ')} onClick={clickHandler} onFocus={focusHandler}>
 				{name}
 				<div className="cross" data-delete>&times;</div>
 			</div>

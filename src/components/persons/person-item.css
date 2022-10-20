@@ -61,7 +61,7 @@
 
 .person-enter.person-enter-active {
   max-height: 110px;
-  transition: max-height 300ms ease-in;
+  transition: max-height 200ms ease-in;
 }
 
 .person-exit {
@@ -70,5 +70,5 @@
 
 .person-exit.person-exit-active {
   max-height: 0;
-  transition: max-height 300ms ease-in;
+  transition: max-height 150ms ease-in;
 }

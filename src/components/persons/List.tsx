@@ -39,7 +39,7 @@ export function List() {
 				<CSSTransition
 					key={person.id}
 					classNames="person"
-					timeout={300}
+					timeout={{enter: 200, exit: 150}}
 					onEntering={animateScroll}
 					onExiting={animateScroll}
 				>
